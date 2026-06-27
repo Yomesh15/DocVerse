@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PatientsList = () => {
+    const navigate = useNavigate();
+
     const [allusers, setallusers] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const handleLogout = () => {
+        localStorage.removeItem("adminToken");
+        navigate("/admin/login");
+    };
 
     useEffect(() => {
         const fetchusers = async () => {
@@ -14,7 +22,6 @@ const PatientsList = () => {
 
                 setallusers(res.data.allusers);
                 console.log(res);
-
             } catch (error) {
                 console.log(error);
             } finally {
@@ -27,16 +34,26 @@ const PatientsList = () => {
 
     return (
         <div className="min-h-screen bg-gray-900 text-white p-4 md:p-8">
-            <div className="mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold">
-                    Patients Management
-                </h1>
+            
+            <div className="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h1 className="text-3xl md:text-4xl font-bold">
+                        Patients Management
+                    </h1>
 
-                <p className="text-gray-400 mt-2">
-                    View and manage all registered patients
-                </p>
+                    <p className="text-gray-400 mt-2">
+                        View and manage all registered patients
+                    </p>
+                </div>
+
+                <button
+                    onClick={handleLogout}
+                    className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-xl font-semibold shadow-lg"
+                >
+                    Logout
+                </button>
             </div>
-
+ 
             <div className="bg-gray-800 rounded-2xl p-6 mb-8 border border-gray-700">
                 <h2 className="text-lg text-gray-300">Total Patients</h2>
 
@@ -64,7 +81,7 @@ const PatientsList = () => {
                     ))}
                 </div>
             ) : (
-                <>
+                <> 
                     <div className="hidden lg:block overflow-x-auto rounded-2xl border border-gray-700">
                         <table className="w-full">
                             <thead className="bg-gray-800">
@@ -114,17 +131,23 @@ const PatientsList = () => {
 
                                 <div className="mt-4 space-y-2 text-gray-300">
                                     <p>
-                                        <span className="font-medium text-white">Email:</span>{" "}
+                                        <span className="font-medium text-white">
+                                            Email:
+                                        </span>{" "}
                                         {user.email}
                                     </p>
 
                                     <p>
-                                        <span className="font-medium text-white">Phone:</span>{" "}
+                                        <span className="font-medium text-white">
+                                            Phone:
+                                        </span>{" "}
                                         {user.phone}
                                     </p>
 
                                     <p>
-                                        <span className="font-medium text-white">City:</span>{" "}
+                                        <span className="font-medium text-white">
+                                            City:
+                                        </span>{" "}
                                         {user.city}
                                     </p>
 

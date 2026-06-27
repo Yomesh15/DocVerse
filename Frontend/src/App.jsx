@@ -17,6 +17,8 @@ import Dashboard from './pages/Doctor/Dashboard'
 import ProtectRoute from "./protect/protect.route"
 import ProtectRouteDoctor from "./protect/protect.route.doctor"
 import Profile from './pages/Profile'
+import AdminProtectRoute from './protect/protect.route.admin'
+import AdminLogin from './pages/Admin/AdminLogin'
 
 
 const App = () => {
@@ -76,7 +78,12 @@ const App = () => {
 
 
       {/* for Admin  */}
-      <Route path='/patientslist' element={<PatientsList />} />
+      <Route path='/admin/patientslist' element={
+        <AdminProtectRoute>
+          <PatientsList />
+        </AdminProtectRoute>
+      } />
+      <Route path='/admin/login' element={<AdminLogin />} />
 
 
 

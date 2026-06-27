@@ -15,4 +15,5 @@ const DoctorProtectRoute = ({ children }) => {
   return doctorToken ? children : null;
 };
 
+
 export default DoctorProtectRoute;
