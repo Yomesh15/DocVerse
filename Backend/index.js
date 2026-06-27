@@ -7,6 +7,7 @@ import UserRoute from "./routes/user.route.js"
 import DoctorRoute from "./routes/doctor.route.js"
 import AppointmentRoute from "./routes/appointment.route.js"
 import NotificationRoute from "./routes/notification.route.js"
+import ContactRoute from "./routes/contact.route.js"
 
 
 const app = express()
@@ -24,6 +25,7 @@ app.use("/api/patient", UserRoute)
 app.use("/api/doctor", DoctorRoute)
 app.use("/api/appointment", AppointmentRoute)
 app.use("/api/notification", NotificationRoute)
+app.use("/api", ContactRoute)
 
 
 

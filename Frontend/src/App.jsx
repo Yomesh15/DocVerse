@@ -16,6 +16,7 @@ import DoctorLogin from './pages/Doctor/DoctorLogin'
 import Dashboard from './pages/Doctor/Dashboard'
 import ProtectRoute from "./protect/protect.route"
 import ProtectRouteDoctor from "./protect/protect.route.doctor"
+import Profile from './pages/Profile'
 
 
 const App = () => {
@@ -54,6 +55,11 @@ const App = () => {
       <Route path='/doctor/:id' element={
         <ProtectRoute>
           <DoctorInfo />
+        </ProtectRoute>
+      } />
+      <Route path='/profile' element={
+        <ProtectRoute>
+          <Profile />
         </ProtectRoute>
       } />
 

@@ -210,13 +210,13 @@ const Navbar = () => {
                       My Appointments
                     </li>
 
-                    <li
+                    {/* <li
                       onClick={() => navigate("/favorites")}
                       className="flex items-center gap-3 px-5 py-3 hover:bg-gray-800 cursor-pointer text-white transition"
                     >
                       <FaHeart />
                       Favorite Doctors
-                    </li>
+                    </li> */}
 
                     <li
                       onClick={() => navigate("/notifications")}
@@ -226,21 +226,21 @@ const Navbar = () => {
                       Notifications
                     </li>
 
-                    <li
+                    {/* <li
                       onClick={() => navigate("/medical-records")}
                       className="flex items-center gap-3 px-5 py-3 hover:bg-gray-800 cursor-pointer text-white transition"
                     >
                       <FaFileMedical />
                       Medical Records
-                    </li>
+                    </li> */}
 
-                    <li
+                    {/* <li
                       onClick={() => navigate("/settings")}
                       className="flex items-center gap-3 px-5 py-3 hover:bg-gray-800 cursor-pointer text-white transition"
                     >
                       <FaCog />
                       Settings
-                    </li>
+                    </li> */}
 
                     <li className="border-t border-gray-700 mt-2">
                       <button className="w-full flex items-center gap-3 px-5 py-3 text-red-400 hover:bg-red-500/10 transition" onClick={() => {

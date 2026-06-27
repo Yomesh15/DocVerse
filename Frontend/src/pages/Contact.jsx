@@ -1,8 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+    const navigate = useNavigate()
+    const [form, setform] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+    })
+
+    const handlechange = (e) => {
+        setform({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handlesubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:2006/api/contact", form);
+
+            toast.success("We Contact You Soon");
+
+            setform({
+                name: "",
+                email: "",
+                subject: "",
+                message: ""
+            });
+
+            navigate("/");
+            window.scrollTo({top:0, behavior:"smooth"})
+        } catch (error) {
+            toast.error("Failed to Save Contact");
+        }
+    };
+
     return (
         <>
             <Navbar />
@@ -32,30 +71,46 @@ const Contact = () => {
                                 <input
                                     type="text"
                                     placeholder="Your Name"
+                                    name="name"
+                                    onChange={handlechange}
+                                    value={form.name}
                                     className="w-full bg-gray-700 p-4 rounded-xl outline-none focus:ring-2 focus:ring-cyan-400"
                                 />
 
                                 <input
                                     type="email"
                                     placeholder="Your Email"
+                                    name="email"
+                                    onChange={handlechange}
+                                    value={form.email}
                                     className="w-full bg-gray-700 p-4 rounded-xl outline-none focus:ring-2 focus:ring-cyan-400"
                                 />
 
                                 <input
                                     type="text"
                                     placeholder="Subject"
+                                    name="subject"
+                                    onChange={handlechange}
+                                    value={form.subject}
                                     className="w-full bg-gray-700 p-4 rounded-xl outline-none focus:ring-2 focus:ring-cyan-400"
                                 />
 
                                 <textarea
                                     rows="5"
                                     placeholder="Your Message"
+                                    name="message"
+                                    onChange={handlechange}
+                                    value={form.message}
                                     className="w-full bg-gray-700 p-4 rounded-xl outline-none focus:ring-2 focus:ring-cyan-400"
                                 ></textarea>
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-cyan-500 hover:bg-cyan-600 py-4 rounded-xl font-semibold transition"
+                                    onClick={
+                                        handlesubmit
+                                    }
+
+                                    className="w-full cursor-pointer bg-cyan-500 hover:bg-cyan-600 py-4 rounded-xl font-semibold transition"
                                 >
                                     Send Message
                                 </button>
@@ -99,7 +154,7 @@ const Contact = () => {
                 </div>
                 <div className="w-232 relative top-[80px] h-px bg-gray-600 mx-auto"></div>
             </section>
-            
+
             <Footer />
         </>
     );

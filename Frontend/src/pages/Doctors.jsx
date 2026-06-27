@@ -5,48 +5,6 @@ import Navbar from "../components/Navbar";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
-// const doctors = [
-//   {
-//     id: 1,
-//     name: "Dr. Rajesh Sharma",
-//     specialization: "Cardiologist",
-//     experience: "12 Years",
-//     rating: 4.8,
-//     location: "Jaipur",
-//     fee: 800,
-//     image: "https://randomuser.me/api/portraits/men/32.jpg",
-//   },
-//   {
-//     id: 2,
-//     name: "Dr. Priya Verma",
-//     specialization: "Dermatologist",
-//     experience: "8 Years",
-//     rating: 4.7,
-//     location: "Delhi",
-//     fee: 700,
-//     image: "https://randomuser.me/api/portraits/women/44.jpg",
-//   },
-//   {
-//     id: 3,
-//     name: "Dr. Amit Gupta",
-//     specialization: "Orthopedic",
-//     experience: "15 Years",
-//     rating: 4.9,
-//     location: "Mumbai",
-//     fee: 1000,
-//     image: "https://randomuser.me/api/portraits/men/65.jpg",
-//   },
-//   {
-//     id: 4,
-//     name: "Dr. Neha Singh",
-//     specialization: "Pediatrician",
-//     experience: "10 Years",
-//     rating: 4.6,
-//     location: "Bangalore",
-//     fee: 600,
-//     image: "https://randomuser.me/api/portraits/women/68.jpg",
-//   },
-// ];
 
 const Doctors = () => {
   const [doctors, setdoctors] = useState([])
@@ -63,26 +21,32 @@ const Doctors = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [urlSearch]);
 
+
   useEffect(() => {
-    const fetchdoctors = async () => {
+    const fetchDoctors = async () => {
       try {
-        const res = await axios.get("http://localhost:2006/api/doctor/getalldoctors")
-        setdoctors(res.data.doctorss)
-        console.log(res);
+        const res = await axios.get(
+          `http://localhost:2006/api/doctor/getalldoctors?search=${urlSearch}`
+        );
+
+
+        setdoctors(res.data.doctorss || [])
       } catch (error) {
         console.log(error);
       }
-    }
-    fetchdoctors()
-  }, [])
+    };
 
-  const filteredDoctors = doctors.filter((doctor) => {
+    fetchDoctors();
+  }, [urlSearch]);
+
+
+  const filteredDoctors = (doctors || []).filter((doctor) => {
     const value = search.toLowerCase();
 
     return (
-      doctor.name.toLowerCase().includes(value) ||
-      doctor.specialization.toLowerCase().includes(value) ||
-      doctor.location.toLowerCase().includes(value)
+      (doctor.name || "").toLowerCase().includes(value) ||
+      (doctor.speciality || doctor.specialization || "").toLowerCase().includes(value) ||
+      (doctor.city || doctor.location || "").toLowerCase().includes(value)
     );
   });
 
