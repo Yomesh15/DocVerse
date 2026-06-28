@@ -1,42 +1,75 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const BookAppointmentCTA = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      offset: 120,
+    });
+  }, []);
+
   return (
     <section className="w-full bg-gray-900 py-14 px-4 md:px-10">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
 
-        <div className="text-center lg:text-left text-white">
-          <h2 className="text-3xl md:text-4xl font-bold">
+        <div
+          className="text-center lg:text-left text-white"
+          data-aos="fade-right"
+        >
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            data-aos="fade-up"
+          >
             Find Your Doctor Today
           </h2>
 
-          <p className="mt-4 text-sm md:text-base text-blue-100 max-w-xl">
+          <p
+            className="mt-4 text-sm md:text-base text-blue-100 max-w-xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             Book appointments with top-rated doctors in just a few clicks.
             Fast, easy, and secure healthcare access anytime you need it.
           </p>
 
-          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button className="bg-white text-blue-600 cursor-pointer font-semibold px-6 py-3 rounded-xl shadow-md hover:bg-gray-100 transition" onClick={() => {
-              navigate('/specialities')
-              window.scrollTo({ top: 0, behavior: "smooth" })
-            }}>
+          <div
+            className="mt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <button
+              className="bg-white text-blue-600 cursor-pointer font-semibold px-6 py-3 rounded-xl shadow-md hover:bg-gray-100 transition"
+              onClick={() => {
+                navigate("/specialities");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
               Book Appointment
             </button>
 
-            <button className="border border-white text-white font-semibold cursor-pointer px-6 py-3 rounded-xl hover:bg-white hover:text-blue-600 transition" onClick={() => {
-              navigate('/doctors')
-              window.scrollTo({ top: 0, behavior: "smooth" })
-
-            }}>
+            <button
+              className="border border-white text-white font-semibold cursor-pointer px-6 py-3 rounded-xl hover:bg-white hover:text-blue-600 transition"
+              onClick={() => {
+                navigate("/doctors");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
               View Doctors
             </button>
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg">
+        <div
+          className="w-full lg:w-1/2 flex justify-center"
+          data-aos="fade-left"
+        >
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:scale-105 transition duration-300">
             <img
               src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png"
               alt="Doctor Appointment"
@@ -46,6 +79,7 @@ const BookAppointmentCTA = () => {
         </div>
 
       </div>
+
       <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[65px]"></div>
     </section>
   );

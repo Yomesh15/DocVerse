@@ -1,17 +1,28 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaStar, FaMapMarkerAlt } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const FeaturedDoctors = () => {
   const [doctors, setDoctors] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      offset: 120,
+    });
+  }, []);
+
+  useEffect(() => {
     const fetchDoctors = async () => {
       try {
         const res = await axios.get(
-          "https://docverse-2.onrender.com/api/doctor/getalldoctors" || "http://localhost:2006/api/doctor/getalldoctors"
+          "https://docverse-2.onrender.com/api/doctor/getalldoctors"
         );
         setDoctors(res.data.doctorss);
       } catch (error) {
@@ -25,8 +36,8 @@ const FeaturedDoctors = () => {
   return (
     <section className="bg-gray-900 -mb-[18px] pt-13 py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-
-        <div className="text-center mb-14">
+ 
+        <div className="text-center mb-14" data-aos="fade-up">
           <h2 className="text-4xl font-bold text-white">
             Featured Doctors
           </h2>
@@ -38,12 +49,13 @@ const FeaturedDoctors = () => {
 
           <div className="w-32 h-[2px] bg-cyan-500 mx-auto mt-5 rounded-full"></div>
         </div>
-
+ 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-
-          {doctors.map((doctor) => (
+          {doctors.map((doctor, index) => (
             <div
               key={doctor._id}
+              data-aos="fade-up"
+              data-aos-delay={index * 120}
               className="bg-white/5 backdrop-blur-md rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 hover:-translate-y-2 transition-all duration-300 shadow-xl"
             >
               <img
@@ -53,21 +65,13 @@ const FeaturedDoctors = () => {
               />
 
               <div className="p-6">
-
                 <h2 className="text-xl font-semibold text-white">
                   {doctor.name}
                 </h2>
 
-
                 <div className="mt-4 space-y-2 text-gray-300 text-sm">
-
-                  <p className="flex items-center gap-2 relative left-[-1px]">
-                    ⚕️ Speciality: {doctor.speciality}
-                  </p>
-
-                  <p className="relative left-[-2px]">
-                    💼 Experience: {doctor.experience} Years
-                  </p>
+                  <p>⚕️ Speciality: {doctor.speciality}</p>
+                  <p>💼 Experience: {doctor.experience} Years</p>
 
                   <p className="flex items-center gap-2">
                     <FaMapMarkerAlt />
@@ -91,13 +95,10 @@ const FeaturedDoctors = () => {
                 >
                   Book Appointment
                 </button>
-
               </div>
             </div>
           ))}
-
-        </div>
-
+        </div> 
         <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[65px]"></div>
       </div>
     </section>

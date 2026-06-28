@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Register = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -12,6 +15,14 @@ const Register = () => {
         city: "",
         password: "",
     });
+
+    useEffect(() => {
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 120,
+        });
+    }, []);
 
     const handleChange = (e) => {
         setForm({
@@ -25,12 +36,11 @@ const Register = () => {
 
         try {
             const res = await axios.post(
-                "https://docverse-2.onrender.com/api/patient/register" || "http://localhost:2006/api/patient/register",
+                "https://docverse-2.onrender.com/api/patient/register",
                 form
             );
 
             toast.success(res.data.message);
-            console.log(res.data);
 
             setForm({
                 name: "",
@@ -40,7 +50,7 @@ const Register = () => {
                 password: "",
             });
 
-            navigate('/login')
+            navigate("/login");
         } catch (error) {
             toast.error("Registration Failed");
             console.log(error);
@@ -49,11 +59,13 @@ const Register = () => {
 
     return (
         <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4 py-10">
+
             <div className="w-full max-w-5xl bg-gray-800 rounded-3xl overflow-hidden shadow-2xl grid lg:grid-cols-2">
- 
 
-                <div className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-blue-600 to-cyan-500 p-10">
-
+                <div
+                    className="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-blue-600 to-cyan-500 p-10"
+                    data-aos="fade-right"
+                >
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/2785/2785544.png"
                         alt="Doctor"
@@ -69,23 +81,33 @@ const Register = () => {
                         <br />
                         book appointments with trusted doctors.
                     </p>
-
                 </div>
- 
 
-                <div className="p-8 lg:p-12">
+                <div
+                    className="p-8 lg:p-12"
+                    data-aos="fade-left"
+                >
 
-                    <h2 className="text-4xl font-bold text-white mb-2">
+                    <h2
+                        className="text-4xl font-bold text-white mb-2"
+                        data-aos="fade-up"
+                    >
                         Patient Register
                     </h2>
 
-                    <p className="text-gray-400 mb-8">
+                    <p
+                        className="text-gray-400 mb-8"
+                        data-aos="fade-up"
+                        data-aos-delay="100"
+                    >
                         Fill in your details to create an account.
                     </p>
 
                     <form
                         onSubmit={handleSubmit}
                         className="grid md:grid-cols-2 gap-5"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
                     >
 
                         <input
@@ -148,7 +170,11 @@ const Register = () => {
 
                     </form>
 
-                    <p className="text-center text-gray-400 mt-8">
+                    <p
+                        className="text-center text-gray-400 mt-8"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                    >
                         Already have an account?
                         <span
                             onClick={() => navigate("/login")}

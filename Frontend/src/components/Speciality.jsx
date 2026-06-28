@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import {
     FaHeartbeat,
     FaBrain,
@@ -42,10 +45,23 @@ const specialties = [
 ];
 
 const Specialities = () => {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 120,
+        });
+    }, []);
+
     return (
         <section className="bg-gray-900 text-gray-300 py-20 px-6">
             <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-14">
+ 
+                <div
+                    className="text-center mb-14"
+                    data-aos="fade-up"
+                >
                     <h2 className="text-4xl md:text-5xl font-bold text-white">
                         Our Specialities
                     </h2>
@@ -54,11 +70,13 @@ const Specialities = () => {
                         healthcare services tailored to your needs.
                     </p>
                 </div>
-
+ 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {specialties.map((item, index) => (
                         <div
                             key={index}
+                            data-aos="fade-up"
+                            data-aos-delay={index * 100}
                             className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 text-center text-white transition-all duration-300 hover:-translate-y-3 hover:bg-white/20 cursor-pointer"
                         >
                             <div className="text-5xl mb-5 flex justify-center text-cyan-300">
@@ -75,9 +93,9 @@ const Specialities = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div> 
 
-           <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[65px]"></div>
+            <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[65px]"></div>
         </section>
     );
 };

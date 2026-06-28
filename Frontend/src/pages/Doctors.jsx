@@ -4,10 +4,11 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Doctors = () => {
-  const [doctors, setdoctors] = useState([])
+  const [doctors, setdoctors] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,20 +18,26 @@ const Doctors = () => {
   const [search, setSearch] = useState(urlSearch);
 
   useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+      offset: 120,
+    });
+  }, []);
+
+  useEffect(() => {
     setSearch(urlSearch);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [urlSearch]);
-
 
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
         const res = await axios.get(
-          `https://docverse-2.onrender.com/api/doctor/getalldoctors?search=${urlSearch}` || `http://localhost:2006/api/doctor/getalldoctors?search=${urlSearch}`
+          `https://docverse-2.onrender.com/api/doctor/getalldoctors?search=${urlSearch}`
         );
 
-
-        setdoctors(res.data.doctorss || [])
+        setdoctors(res.data.doctorss || []);
       } catch (error) {
         console.log(error);
       }
@@ -38,7 +45,6 @@ const Doctors = () => {
 
     fetchDoctors();
   }, [urlSearch]);
-
 
   const filteredDoctors = (doctors || []).filter((doctor) => {
     const value = search.toLowerCase();
@@ -55,9 +61,10 @@ const Doctors = () => {
       <Navbar />
 
       <section className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white pt-32 pb-16 px-4">
+
         <div className="max-w-7xl mx-auto">
 
-          <div className="text-center">
+          <div className="text-center" data-aos="fade-up">
             <h1 className="text-4xl md:text-5xl font-bold">
               Find Your <span className="text-cyan-400">Doctor</span>
             </h1>
@@ -66,7 +73,7 @@ const Doctors = () => {
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto mt-10">
+          <div className="max-w-xl mx-auto mt-10" data-aos="fade-up" data-aos-delay="100">
             <div className="flex items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4">
               <FaSearch className="text-gray-400" />
 
@@ -84,16 +91,18 @@ const Doctors = () => {
             </div>
           </div>
 
-          <p className="text-center text-gray-400 mt-6">
+          <p className="text-center text-gray-400 mt-6" data-aos="fade-up">
             {filteredDoctors.length} Doctors Found
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-12">
 
             {filteredDoctors.length > 0 ? (
-              filteredDoctors.map((doctor) => (
+              filteredDoctors.map((doctor, index) => (
                 <div
-                  key={doctor.id}
+                  key={doctor._id}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 80}
                   className="bg-white/5 backdrop-blur-md rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500 hover:-translate-y-2 transition-all duration-300 shadow-xl"
                 >
 
@@ -109,10 +118,6 @@ const Doctors = () => {
                       {doctor.name}
                     </h2>
 
-                    {/* <p className="text-cyan-400 mt-1">
-                      {doctor.specialization}
-                    </p> */}
-
                     <div className="mt-4 space-y-2 text-gray-300 text-sm">
 
                       <div className="flex items-center gap-2">
@@ -120,7 +125,9 @@ const Doctors = () => {
                         <span>Speciality : {doctor.speciality}</span>
                       </div>
 
-                      <p className="relative left-[-2px]">💼 Experience : {doctor.experience}</p>
+                      <p className="relative left-[-2px]">
+                        💼 Experience : {doctor.experience}
+                      </p>
 
                       <div className="flex items-center gap-2">
                         <FaMapMarkerAlt />
@@ -128,7 +135,7 @@ const Doctors = () => {
                       </div>
 
                       <p>
-                        💰 Consultation Fee:{" "}
+                        💰 Consultation Fee:
                         <span className="text-green-400 pl-1 font-semibold">
                           ₹{doctor.fees}
                         </span>
@@ -149,7 +156,7 @@ const Doctors = () => {
                 </div>
               ))
             ) : (
-              <div className="col-span-full text-center py-20">
+              <div className="col-span-full text-center py-20" data-aos="fade-up">
                 <h2 className="text-2xl font-semibold text-gray-300">
                   No Doctors Found
                 </h2>
@@ -161,8 +168,6 @@ const Doctors = () => {
 
           </div>
         </div>
-
-        {/* <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[66px]"></div> */}
       </section>
 
       <Footer />

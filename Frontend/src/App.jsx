@@ -86,7 +86,7 @@ const App = () => {
       } />
       <Route path='/admin/login' element={<AdminLogin />} />
 
-      // for unregister route 
+      {/* // for unregister route  */}
       <Route path="*" element={<NotFound />} />
 
     </Routes>
