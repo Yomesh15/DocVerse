@@ -27,13 +27,13 @@ const DoctorLogin = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:2006/api/doctor/login",
+        "https://doc-verse-gamma.vercel.app/api/doctor/login" || "http://localhost:2006/api/doctor/login",
         form
       );
 
       toast.success(res.data.message);
       // console.log(res);
-      
+
 
       // Save token when you add JWT
       localStorage.setItem("doctorToken", res.data.token);
@@ -79,7 +79,7 @@ const DoctorLogin = () => {
           </p>
 
         </div>
- 
+
 
         <div className="p-8 lg:p-12 flex flex-col justify-center">
 
