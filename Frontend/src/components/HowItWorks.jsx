@@ -35,7 +35,7 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <section className="w-full pt-16 bg-gray-900 py-20 px-5">
+    <section className="w-full  pt-16 bg-gray-900 py-20 px-5">
       <div className="max-w-7xl mx-auto text-center">
 
         <span

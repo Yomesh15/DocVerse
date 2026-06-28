@@ -32,7 +32,7 @@ const About = () => {
                         </p>
                     </div>
 
-                    <div className="grid lg:grid-cols-2 gap-12 items-center mt-20">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center mt-20 overflow-hidden">
 
                         <div data-aos="fade-right">
                             <img

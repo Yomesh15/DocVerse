@@ -15,7 +15,7 @@ const BookAppointmentCTA = () => {
   }, []);
 
   return (
-    <section className="w-full bg-gray-900 py-14 px-4 md:px-10">
+    <section className="w-full  bg-gray-900 py-14 px-4 md:px-10">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
 
         <div

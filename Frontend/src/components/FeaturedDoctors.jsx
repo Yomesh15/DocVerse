@@ -34,7 +34,7 @@ const FeaturedDoctors = () => {
   }, []);
 
   return (
-    <section className="bg-gray-900 -mb-[18px] pt-13 py-20 px-4 md:px-8">
+    <section className="bg-gray-900  -mb-[18px] pt-13 py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
  
         <div className="text-center mb-14" data-aos="fade-up">

@@ -55,7 +55,7 @@ const Specialities = () => {
     }, []);
 
     return (
-        <section className="bg-gray-900 text-gray-300 py-20 px-6">
+        <section className="bg-gray-900  text-gray-300 py-20 px-6">
             <div className="max-w-7xl mx-auto">
  
                 <div

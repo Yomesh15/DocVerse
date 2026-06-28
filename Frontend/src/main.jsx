@@ -11,7 +11,9 @@ import 'react-toastify/dist/ReactToastify.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <div className='overflow-x-hidden'>
+        <App />
+      </div>
       <ToastContainer />
     </BrowserRouter>
   </StrictMode>

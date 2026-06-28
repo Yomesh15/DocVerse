@@ -31,9 +31,9 @@ const Profile = () => {
         <>
             <Navbar />
 
-            <div className="min-h-screen bg-gradient-to-b pb-19 from-gray-950 via-gray-900 to-gray-950 text-white pt-34 px-6">
-
-                <div className="max-w-5xl mx-auto text-center" data-aos="fade-down">
+            <div className="min-h-screen overflow-x-hidden bg-gradient-to-b pb-19 from-gray-950 via-gray-900 to-gray-950 text-white pt-34 px-6">
+                
+                <div className="max-w-5xl mx-auto text-center" data-aos="fade-up">
                     <h1 className="text-4xl md:text-5xl font-bold">
                         My <span className="text-cyan-400">Profile</span>
                     </h1>

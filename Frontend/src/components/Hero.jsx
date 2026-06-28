@@ -16,7 +16,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen pt-6 bg-gray-900">
+    <section className="min-h-screen  pt-6 bg-gray-900">
       <div className="h-full min-h-screen flex items-center justify-center px-4">
         <div className="text-center max-w-4xl" data-aos="fade-up">
 

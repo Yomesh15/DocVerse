@@ -60,7 +60,7 @@ const Contact = () => {
         <>
             <Navbar />
 
-            <section className="min-h-screen pt-33 bg-gray-900 text-white py-24 px-6">
+            <section className="min-h-screen pt-33 bg-gray-900 text-white py-24 px-6 overflow-x-hidden">
 
                 <div className="max-w-7xl mx-auto">
 
