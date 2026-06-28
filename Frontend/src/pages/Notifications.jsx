@@ -21,7 +21,7 @@ const Notifications = () => {
         }
       );
       console.log(res);
-      
+
 
       setNotifications(res.data.notifications || []);
     } catch (err) {
@@ -94,7 +94,7 @@ const Notifications = () => {
         </div>
 
       </section>
-        <div className="w-full h-px bg-gray-600 mx-auto mt-0"></div>
+      <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[-45px]"></div>
 
       <Footer />
     </>

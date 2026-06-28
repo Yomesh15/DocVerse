@@ -35,6 +35,14 @@ const Navbar = () => {
     setpatientname(name)
   }, [])
 
+  const handleSearchSubmit = () => {
+    if (search.trim()) {
+      navigate(`/doctors?search=${search}`);
+      setSearch("");
+      setMenuOpen(false);
+    }
+  };
+
 
   useEffect(() => {
     if (token) {
@@ -140,7 +148,7 @@ const Navbar = () => {
                 onChange={(e) => setSearch(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    navigate(`/doctors?search=${search}`);
+                    handleSearchSubmit();
                   }
                 }}
                 placeholder="Search doctors..."
@@ -291,11 +299,21 @@ const Navbar = () => {
           ) : (
             <div className="mt-5">
               <div className="flex items-center bg-white/10 px-4 py-2 rounded-xl">
-                <FaSearch />
+                <FaSearch
+                  onClick={handleSearchSubmit}
+                  className="cursor-pointer"
+                />
 
                 <input
                   type="text"
-                  placeholder="Search..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearchSubmit();
+                    }
+                  }}
+                  placeholder="Search doctors..."
                   className="bg-transparent outline-none ml-2 w-full"
                 />
               </div>
@@ -309,7 +327,8 @@ const Navbar = () => {
                 <img
                   src="https://i.pravatar.cc/150?img=12"
                   alt=""
-                  className="w-10 h-10 rounded-full border border-cyan-400"
+                  onClick={() => navigate("/profile")}
+                  className="w-10 h-10 rounded-full border border-cyan-400 cursor-pointer"
                 />
               </div>
             </div>

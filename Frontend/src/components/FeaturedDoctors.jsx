@@ -25,7 +25,7 @@ const FeaturedDoctors = () => {
   return (
     <section className="bg-gray-900 -mb-[18px] pt-13 py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
- 
+
         <div className="text-center mb-14">
           <h2 className="text-4xl font-bold text-white">
             Featured Doctors
@@ -38,7 +38,7 @@ const FeaturedDoctors = () => {
 
           <div className="w-32 h-[2px] bg-cyan-500 mx-auto mt-5 rounded-full"></div>
         </div>
- 
+
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
           {doctors.map((doctor) => (
@@ -98,7 +98,7 @@ const FeaturedDoctors = () => {
 
         </div>
 
-        <div className="w-232 relative top-[70px] h-px bg-gray-600 mx-auto"></div>
+        <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[65px]"></div>
       </div>
     </section>
   );

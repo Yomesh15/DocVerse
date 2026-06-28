@@ -36,7 +36,7 @@ const Contact = () => {
             });
 
             navigate("/");
-            window.scrollTo({top:0, behavior:"smooth"})
+            window.scrollTo({ top: 0, behavior: "smooth" })
         } catch (error) {
             toast.error("Failed to Save Contact");
         }
@@ -152,7 +152,7 @@ const Contact = () => {
                     </div>
 
                 </div>
-                <div className="w-232 relative top-[80px] h-px bg-gray-600 mx-auto"></div>
+                <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[48px]"></div>
             </section>
 
             <Footer />
