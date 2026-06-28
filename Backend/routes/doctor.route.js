@@ -201,14 +201,22 @@ doctor_router.post("/login", async (req, res) => {
 
 doctor_router.get("/getalldoctors", async (req, res) => {
     try {
-        const doctorss = await Doctor.find()
+        const doctorss = await Doctor.find().select(
+            "-password -email -phone -__v -createdAt -updatedAt"
+        );
 
-        res.status(200).json({ message: "Doctors Fetched Successfully", success: true, doctorss })
+        res.status(200).json({
+            message: "Doctors Fetched Successfully",
+            success: true,
+            doctorss,
+        });
     } catch (error) {
-        res.status(400).json({ message: "Internal Server Error", success: false })
+        res.status(500).json({
+            message: "Internal Server Error",
+            success: false,
+        });
     }
-})
-
+});
 
 
 export default doctor_router;
