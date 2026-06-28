@@ -94,7 +94,7 @@ const Notifications = () => {
         </div>
 
       </section>
-      <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[-45px]"></div>
+      <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[-40px]"></div>
 
       <Footer />
     </>
