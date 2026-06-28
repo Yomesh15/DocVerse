@@ -19,6 +19,7 @@ import ProtectRouteDoctor from "./protect/protect.route.doctor"
 import Profile from './pages/Profile'
 import AdminProtectRoute from './protect/protect.route.admin'
 import AdminLogin from './pages/Admin/AdminLogin'
+import NotFound from './pages/NotFound'
 
 
 const App = () => {
@@ -85,7 +86,8 @@ const App = () => {
       } />
       <Route path='/admin/login' element={<AdminLogin />} />
 
-
+      // for unregister route 
+      <Route path="*" element={<NotFound />} />
 
     </Routes>
   )
