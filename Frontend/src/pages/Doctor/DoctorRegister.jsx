@@ -38,7 +38,7 @@ const DoctorRegister = () => {
             setLoading(true);
 
             const res = await axios.post(
-                "https://doc-verse-gamma.vercel.app/api/doctor/register" || "http://localhost:2006/api/doctor/register",
+                "https://docverse-2.onrender.com/api/doctor/register" || "http://localhost:2006/api/doctor/register",
                 form
             );
 

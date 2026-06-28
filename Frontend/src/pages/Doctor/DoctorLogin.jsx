@@ -27,7 +27,7 @@ const DoctorLogin = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "https://doc-verse-gamma.vercel.app/api/doctor/login" || "http://localhost:2006/api/doctor/login",
+        "https://docverse-2.onrender.com/api/doctor/login" || "http://localhost:2006/api/doctor/login",
         form
       );
 
