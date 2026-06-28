@@ -30,10 +30,10 @@ const Navbar = () => {
   const [search, setSearch] = useState("")
 
 
-  useEffect(()=>{
+  useEffect(() => {
     const name = localStorage.getItem("patientName")
     setpatientname(name)
-  },[])
+  }, [])
 
 
   useEffect(() => {

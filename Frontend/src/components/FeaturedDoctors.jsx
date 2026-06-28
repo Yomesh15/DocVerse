@@ -11,7 +11,7 @@ const FeaturedDoctors = () => {
     const fetchDoctors = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:2006/api/doctor/getalldoctors"
+          "https://docverse-2.onrender.com/api/doctor/getalldoctors" || "http://localhost:2006/api/doctor/getalldoctors"
         );
         setDoctors(res.data.doctorss);
       } catch (error) {

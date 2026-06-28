@@ -24,7 +24,7 @@ const AdminLogin = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:2006/api/admin/login",
+        "https://docverse-2.onrender.com/api/admin/login" || "http://localhost:2006/api/admin/login",
         form
       );
 

@@ -22,7 +22,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:2006/api/patient/login",
+        "https://docverse-2.onrender.com/api/patient/login" || "http://localhost:2006/api/patient/login",
         form
       );
 

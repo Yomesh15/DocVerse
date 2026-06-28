@@ -19,7 +19,7 @@ const Dashboard = () => {
             const token = localStorage.getItem("token");
 
             await axios.patch(
-                `http://localhost:2006/api/appointment/status/${id}`,
+                `https://docverse-2.onrender.com/api/appointment/status/${id}` || `http://localhost:2006/api/appointment/status/${id}`,
                 { status },
                 {
                     headers: {
@@ -40,7 +40,7 @@ const Dashboard = () => {
             const token = localStorage.getItem("doctorToken");
 
             const res = await axios.get(
-                "http://localhost:2006/api/appointment/doctor",
+                "https://docverse-2.onrender.com/api/appointment/doctor" || "http://localhost:2006/api/appointment/doctor",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

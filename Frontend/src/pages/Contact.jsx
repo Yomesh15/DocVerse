@@ -24,7 +24,7 @@ const Contact = () => {
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:2006/api/contact", form);
+            await axios.post("https://docverse-2.onrender.com/api/contact" || "http://localhost:2006/api/contact", form);
 
             toast.success("We Contact You Soon");
 

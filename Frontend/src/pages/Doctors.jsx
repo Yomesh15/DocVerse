@@ -26,7 +26,7 @@ const Doctors = () => {
     const fetchDoctors = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:2006/api/doctor/getalldoctors?search=${urlSearch}`
+          `https://docverse-2.onrender.com/api/doctor/getalldoctors?search=${urlSearch}` || `http://localhost:2006/api/doctor/getalldoctors?search=${urlSearch}`
         );
 
 

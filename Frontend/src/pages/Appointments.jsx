@@ -13,7 +13,7 @@ const Appointments = () => {
 
 
       const res = await axios.get(
-        "http://localhost:2006/api/notification",
+        "https://docverse-2.onrender.com/api/notification" || "http://localhost:2006/api/notification",
         {
           headers: {
             Authorization: `Bearer ${token}`

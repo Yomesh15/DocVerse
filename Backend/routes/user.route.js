@@ -2,6 +2,8 @@ import User from "../models/user.model.js";
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import AdminProtectRoute from "../../Frontend/src/protect/protect.route.admin.js";
+import ProtectAPI from "../middlewares/protectapi.js";
 
 const user_router = express.Router();
 
@@ -117,14 +119,16 @@ user_router.post("/login", async (req, res) => {
 
 
 // get all users
-user_router.get("/getallusers", async (req, res) => {
+user_router.get("/getallusers", ProtectAPI, async (req, res) => {
     try {
-        const allusers = await User.find()
+        const allusers = await User.find().select(
+            "name email phone gender image city address"
+        );
 
         return res.status(200).json({
-            message: `All Users Fetched`,
+            message: "All Users Fetched",
             success: true,
-            allusers
+            allusers,
         });
     } catch (error) {
         console.log(error);

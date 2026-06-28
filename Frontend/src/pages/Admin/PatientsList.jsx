@@ -17,7 +17,7 @@ const PatientsList = () => {
         const fetchusers = async () => {
             try {
                 const res = await axios.get(
-                    "http://localhost:2006/api/patient/getallusers"
+                    "https://docverse-2.onrender.com/api/patient/getallusers" || "http://localhost:2006/api/patient/getallusers"
                 );
 
                 setallusers(res.data.allusers);

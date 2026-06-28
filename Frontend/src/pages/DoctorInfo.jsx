@@ -31,7 +31,7 @@ const DoctorInfo = () => {
                 setLoading(true);
 
                 const res = await axios.get(
-                    "http://localhost:2006/api/doctor/getalldoctors"
+                    "https://docverse-2.onrender.com/api/doctor/getalldoctors" || "http://localhost:2006/api/doctor/getalldoctors"
                 );
 
                 const foundDoctor = res.data.doctorss.find(
@@ -56,7 +56,7 @@ const DoctorInfo = () => {
 
 
             const res = await axios.post(
-                "http://localhost:2006/api/appointment/book",
+                "https://docverse-2.onrender.com/api/appointment/book" || "http://localhost:2006/api/appointment/book",
                 {
                     doctorId: doctor._id,
                     appointmentDate,
@@ -304,9 +304,9 @@ const DoctorInfo = () => {
                                 </div>
                                 <div className="flex flex-col sm:flex-row gap-5 mt-10">
 
-                                    <button className="flex-1 cursor-pointer bg-cyan-500 hover:bg-cyan-600 transition py-4 rounded-xl font-semibold text-lg" onClick={() =>{ 
+                                    <button className="flex-1 cursor-pointer bg-cyan-500 hover:bg-cyan-600 transition py-4 rounded-xl font-semibold text-lg" onClick={() => {
                                         bookappointment()
-                                        window.scrollTo({top:0,behavior:"smooth"})
+                                        window.scrollTo({ top: 0, behavior: "smooth" })
                                     }}>
                                         Book Appointment
                                     </button>
