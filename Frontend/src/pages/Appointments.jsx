@@ -39,8 +39,7 @@ const Appointments = () => {
     <>
       <Navbar />
 
-      <section className="min-h-screen bg-gray-900 pt-4 pb-26 px-4 md:px-8">
-        <div className="max-w-5xl mx-auto">
+<section className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white pt-4 pb-26 px-4 md:px-8">        <div className="max-w-5xl mx-auto">
 
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl pt-50 font-bold text-white">
@@ -94,7 +93,7 @@ const Appointments = () => {
         </div>
 
       </section>
-           <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[65px]"></div>
+           {/* <div className="w-[90%] sm:w-[500px] md:w-[700px] lg:w-[928px] h-px bg-gray-600 mx-auto relative top-[65px]"></div> */}
 
       <Footer />
     </>
